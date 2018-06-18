@@ -91,9 +91,9 @@
     <Compile Include="Heplers\LostfilmHelper.cs" />
     <Compile Include="Heplers\ProjectNameConstants.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Interfaces\IFileLoader.cs" />
     <Compile Include="Interfaces\INinjectModuleBootstrapper.cs" />
     <Compile Include="Interfaces\IParser.cs" />
-    <Compile Include="Interfaces\IParseService.cs" />
     <Compile Include="Jobs\LostfilmParseJob.cs" />
     <Compile Include="Jobs\AlbumInfoParseJob.cs" />
     <Compile Include="Models\AlbumInfoRelease.cs" />
