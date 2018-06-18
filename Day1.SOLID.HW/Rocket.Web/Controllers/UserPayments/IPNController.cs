@@ -95,7 +95,7 @@ namespace Rocket.Web.Controllers.UserPayments
             if (ipnContext.Verification.Equals("VERIFIED"))
             {
                 var paymentInfo = ipnContext.RequestBody;
-                var payment = new BL.Common.Models.UserPayment();
+                var payment = new BL.Common.Models.UserPayment.Payment();
                 payment.Summ = decimal.Parse(GetFromSpam("mc_gross", paymentInfo).Replace(".", ","));
                 payment.PaymentID = GetFromSpam("payer_id", paymentInfo);
                 payment.Result = GetFromSpam("payment_status", paymentInfo);

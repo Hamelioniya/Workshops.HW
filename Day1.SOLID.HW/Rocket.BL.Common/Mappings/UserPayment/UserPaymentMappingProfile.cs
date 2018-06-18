@@ -11,7 +11,7 @@ namespace Rocket.BL.Common.Mappings
     {
         public UserPaymentMappingProfile()
         {
-            CreateMap<Models.UserPayment, DbUserPayment>()
+            CreateMap<Models.UserPayment.Payment, DbUserPayment>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))

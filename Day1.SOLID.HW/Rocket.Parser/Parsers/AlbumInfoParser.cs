@@ -24,16 +24,18 @@ namespace Rocket.Parser.Parsers
     {
         private readonly ILoadHtmlService _loadHtmlService;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IFileLoader _fileLoader;
 
         /// <summary>
         /// Ctor
         /// </summary>
         /// <param name="loadHtmlService">Сервис загрузки HTML</param>
         /// <param name="unitOfWork">UoW</param>
-        public AlbumInfoParser(ILoadHtmlService loadHtmlService, IUnitOfWork unitOfWork)
+        public AlbumInfoParser(ILoadHtmlService loadHtmlService, IUnitOfWork unitOfWork, IFileLoader fileLoader)
         {
             _loadHtmlService = loadHtmlService;
             _unitOfWork = unitOfWork;
+            _fileLoader = fileLoader;
         }
 
         /// <inheritdoc />
@@ -426,7 +428,7 @@ namespace Rocket.Parser.Parsers
                 File.Delete(fillPath);
             }
 
-            await _loadHtmlService.DownloadFile(url, fillPath).ConfigureAwait(false);
+            await _fileLoader.DownloadFile(url, fillPath).ConfigureAwait(false);
 
             release.CoverPath = fillPath;
             release.ImageFullUrl = url;

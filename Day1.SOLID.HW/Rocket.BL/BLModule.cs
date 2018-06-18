@@ -13,7 +13,7 @@ using Rocket.BL.Services.Notification;
 using Rocket.BL.Services.PersonalArea;
 using Rocket.BL.Services.ReleaseList;
 using Rocket.BL.Services.User;
-using Rocket.BL.Services.UserPaymentService;
+using Rocket.BL.Services.UserPayment;
 using Rocket.BL.Validators.User;
 using System.Collections.Generic;
 
