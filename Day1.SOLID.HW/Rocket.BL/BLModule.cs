@@ -26,7 +26,7 @@ namespace Rocket.BL
             Bind<ITvSeriesDetailedInfoService>().To<TvSeriesDetailedInfoService>();
             Bind<IMusicDetailedInfoService>().To<MusicDetailedInfoService>();
             Bind<IEpisodeService>().To<EpisodeService>();
-            Bind<IPersonalData>().To<PersonalDataService>();
+            Bind<IPersonalDataManager>().To<PersonalDataService>();
             Bind<IValidator<Common.Models.User.User>>().To<UserValidatorCheckRequiredFields>();
             Bind<IEmailManager>().To<ChangeEmailManagerService>();
             Bind<IUserPaymentService>().To<UserPaymentService>();

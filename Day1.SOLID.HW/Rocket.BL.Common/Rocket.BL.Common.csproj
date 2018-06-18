@@ -139,9 +139,10 @@
     <Compile Include="Services\IRoleService.cs" />
     <Compile Include="Services\IUserRoleManager.cs" />
     <Compile Include="Services\PersonalArea\IEmailManager.cs" />
+    <Compile Include="Services\PersonalArea\IPasswordManager.cs" />
     <Compile Include="Services\PersonalArea\ITVGenreManager.cs" />
     <Compile Include="Services\PersonalArea\IMusicGenreManager.cs" />
-    <Compile Include="Services\PersonalArea\IPersonalData.cs" />
+    <Compile Include="Services\PersonalArea\IPersonalDataManager.cs" />
     <Compile Include="Models\PersonalArea\Category.cs" />
     <Compile Include="Models\PersonalArea\Genre.cs" />
     <Compile Include="Models\ReleaseList\Country.cs" />

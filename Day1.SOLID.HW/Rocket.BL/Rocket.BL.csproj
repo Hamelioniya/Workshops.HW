@@ -125,6 +125,7 @@
     <Compile Include="Services\PersonalArea\ChangeEmailManagerService.cs" />
     <Compile Include="Services\PersonalArea\ChangeTVGenreManagerService.cs" />
     <Compile Include="Services\PersonalArea\ChangeMusicGenreManagerService.cs" />
+    <Compile Include="Services\PersonalArea\PasswordService.cs" />
     <Compile Include="Services\ReleaseList\EpisodeService.cs" />
     <Compile Include="Services\ReleaseList\GenreService.cs" />
     <Compile Include="Services\ReleaseList\GuestReleaseListService.cs" />

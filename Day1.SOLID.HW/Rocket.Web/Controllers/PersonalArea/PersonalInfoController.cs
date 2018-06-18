@@ -12,18 +12,18 @@ namespace Rocket.Web.Controllers.PersonalArea
     [RoutePrefix("personal/user")]
     public class PersonalInfoController : ApiController
     {
-        private IPersonalData _ipersonaldata;
-
-        public PersonalInfoController(IPersonalData personalData)
+        private IPersonalDataManager _personalDataManager;
+        
+        public PersonalInfoController(IPersonalDataManager personalDataManager)
         {
-            _ipersonaldata = personalData;
+            _personalDataManager = personalDataManager;
         }
 
         [HttpGet]
         [Route()]
         public IHttpActionResult GetAuthorisedUser()
         {
-            var user = _ipersonaldata.GetUserData(User.GetUserId());
+            var user = _personalDataManager.GetUserData(User.GetUserId());
             return user == null ? (IHttpActionResult)NotFound() : Ok(user);
         }
 
@@ -40,30 +40,7 @@ namespace Rocket.Web.Controllers.PersonalArea
 
             try
             {
-                _ipersonaldata.ChangePersonalData(User.GetUserId(), firstName, lastName, avatar);
-            }
-            catch (ValidationException exception)
-            {
-                return BadRequest(exception.Message);
-            }
-
-            return new StatusCodeResult(HttpStatusCode.NoContent, Request);
-        }
-
-        [HttpPut]
-        [SwaggerResponseRemoveDefaults]
-        [SwaggerResponse(HttpStatusCode.BadRequest, "Password is not valid", typeof(string))]
-        [Route("password")]
-        public IHttpActionResult UpdateUserPassword(string password, string passwordConfirm)
-        {
-            if (string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(passwordConfirm))
-            {
-                return BadRequest(Resources.EmptyPassword);
-            }
-
-            try
-            {
-                _ipersonaldata.ChangePasswordData(User.GetUserId(), password, passwordConfirm);
+                _personalDataManager.ChangePersonalData(User.GetUserId(), firstName, lastName, avatar);
             }
             catch (ValidationException exception)
             {

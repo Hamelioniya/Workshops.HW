@@ -370,6 +370,7 @@
     <Compile Include="Controllers\DebugController.cs" />
     <Compile Include="Controllers\LoggerController.cs" />
     <Compile Include="Controllers\PersonalArea\MusicGenresController.cs" />
+    <Compile Include="Controllers\PersonalArea\PasswordController.cs" />
     <Compile Include="Controllers\ReleaseList\GenreController.cs" />
     <Compile Include="Controllers\ReleaseList\SubscriptionController.cs" />
     <Compile Include="Controllers\UserPayments\IPNController.cs" />
