@@ -97,39 +97,5 @@ namespace Rocket.BL.Services.ReleaseList
 
             return Mapper.Map<TvSeriesFullDto>(tvSeries);
         }
-
-        public TvSeriesSeasonsDto GetSeasons(int id)
-        {
-            var tvSeries = _unitOfWork.TvSeriasRepository
-                .GetById(id);
-
-            if (tvSeries == null)
-            {
-                return null;
-            }
-
-            tvSeries.ListSeasons = _unitOfWork.SeasonRepository
-                .Get(f => f.TvSeriesId == id, includeProperties: $"{nameof(SeasonEntity.ListEpisode)}").ToList();
-
-            return Mapper.Map<TvSeriesSeasonsDto>(tvSeries);
-        }
-
-        public TvSeriesPersonsDto GetPersons(int id)
-        {
-            var tvSeries = _unitOfWork.TvSeriasRepository
-                .GetById(id);
-
-            if (tvSeries == null)
-            {
-                return null;
-            }
-
-            tvSeries.ListPerson = _unitOfWork.PersonRepository
-                .Get(
-                    f => f.ListTvSerias.Select(t => t.Id).Contains(id),
-                    includeProperties: $"{nameof(PersonEntity.PersonType)}").ToList();
-
-            return Mapper.Map<TvSeriesPersonsDto>(tvSeries);
-        }
     }
 }

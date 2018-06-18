@@ -10,11 +10,11 @@ namespace Rocket.Web.Controllers.ReleaseList
     [RoutePrefix("music")]
     public class MusicController : ApiController
     {
-        private readonly IMusicService _musicDetailedInfoService;
+        private readonly IMusicService _musicService;
 
-        public MusicController(IMusicService musicDetailedInfoService)
+        public MusicController(IMusicService musicService)
         {
-            _musicDetailedInfoService = musicDetailedInfoService;
+            _musicService = musicService;
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Rocket.Web.Controllers.ReleaseList
         [Route("{id:int:min(1)}")]
         public IHttpActionResult GetMusicById(int id)
         {
-            var model = _musicDetailedInfoService.GetMusic(id);
+            var model = _musicService.GetMusic(id);
             return model == null ? (IHttpActionResult)NotFound() : Ok(model);
         }
 
@@ -40,7 +40,7 @@ namespace Rocket.Web.Controllers.ReleaseList
         [Route("page/{pageNumber:int:min(1)}")]
         public IHttpActionResult GetMusicByPage(int pageNumber, int? genreId = null)
         {
-            var page = _musicDetailedInfoService.GetPageInfoByDate(
+            var page = _musicService.GetPageInfoByDate(
                 SettingsManager.ReleasesSettings.Pagination.PageSize,
                 pageNumber,
                     genreId,
@@ -58,7 +58,7 @@ namespace Rocket.Web.Controllers.ReleaseList
         [Route("new/page/{pageNumber:int:min(1)}")]
         public IHttpActionResult GetNewMusicByPage(int pageNumber, int? genreId = null)
         {
-            var page = _musicDetailedInfoService.GetNewPageInfoByDate(
+            var page = _musicService.GetNewPageInfoByDate(
                 SettingsManager.ReleasesSettings.Pagination.PageSize,
                 pageNumber,
                 genreId,
@@ -82,7 +82,7 @@ namespace Rocket.Web.Controllers.ReleaseList
                 return BadRequest(Resources.BadStartEndDatesMessage);
             }
 
-            var musics = _musicDetailedInfoService.GetMusicByDates(start_date.Date, end_date.Date, User.GetUserId());
+            var musics = _musicService.GetMusicByDates(start_date.Date, end_date.Date, User.GetUserId());
             return Ok(musics);
         }
     }

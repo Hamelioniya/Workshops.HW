@@ -138,6 +138,8 @@
     <Compile Include="Services\Notification\IMailNotificationService.cs" />
     <Compile Include="Services\ReleaseList\IFilmService.cs" />
     <Compile Include="Services\ReleaseList\IMusicService.cs" />
+    <Compile Include="Services\ReleaseList\ISeasonService.cs" />
+    <Compile Include="Services\ReleaseList\ITvSeriesPersonService.cs" />
     <Compile Include="Services\ReleaseList\ITvSeriesService.cs" />
     <Compile Include="Services\UserRole\IRoleService.cs" />
     <Compile Include="Services\UserRole\IUserRoleManager.cs" />

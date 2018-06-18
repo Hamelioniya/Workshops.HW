@@ -1,6 +1,5 @@
 ﻿using Rocket.BL.Common.Services.ReleaseList;
 using System.Web.Http;
-using IdentityServer3.Core.Extensions;
 using Rocket.Web.ConfigHandlers;
 using Rocket.Web.Extensions;
 using Rocket.Web.Properties;
@@ -10,11 +9,15 @@ namespace Rocket.Web.Controllers.ReleaseList
     [RoutePrefix("tvseries")]
     public class TvSeriesController : ApiController
     {
-        private readonly ITvSeriesService _tvSeriesDetailedInfoService;
+        private readonly ITvSeriesService _tvSeriesService;
+        private readonly ITvSeriesPersonService _tvSeriesPersonService;
+        private readonly ISeasonService _seasonService;
 
-        public TvSeriesController(ITvSeriesService tvSeriesDetailedInfoService)
+        public TvSeriesController(ITvSeriesService tvSeriesService, ITvSeriesPersonService tvSeriesPersonService, ISeasonService seasonService)
         {
-            _tvSeriesDetailedInfoService = tvSeriesDetailedInfoService;
+            _tvSeriesService = tvSeriesService;
+            _tvSeriesPersonService = tvSeriesPersonService;
+            _seasonService = seasonService;
         }
 
         /// <summary>
@@ -39,7 +42,7 @@ namespace Rocket.Web.Controllers.ReleaseList
                 return BadRequest(Resources.BadEpisodesCountMessage);
             }
 
-            var tvSeries = _tvSeriesDetailedInfoService.GetTvSeries(id, episodes_count, persons_count);
+            var tvSeries = _tvSeriesService.GetTvSeries(id, episodes_count, persons_count);
             return tvSeries == null ? (IHttpActionResult)NotFound() : Ok(tvSeries);
         }
 
@@ -60,7 +63,7 @@ namespace Rocket.Web.Controllers.ReleaseList
                 return BadRequest(Resources.BadPageSizeMessage);
             }
 
-            var page = _tvSeriesDetailedInfoService.GetPageInfo(
+            var page = _tvSeriesService.GetPageInfo(
                 page_size ?? SettingsManager.ReleasesSettings.Pagination.PageSize,
                 pageNumber,
                 genre_id,
@@ -77,7 +80,7 @@ namespace Rocket.Web.Controllers.ReleaseList
         [Route("{id:int:min(1)}/seasons")]
         public IHttpActionResult GetTvSeriesSeasons(int id)
         {
-            var tvSeries = _tvSeriesDetailedInfoService.GetSeasons(id);
+            var tvSeries = _seasonService.GetSeasons(id);
             return tvSeries == null ? (IHttpActionResult)NotFound() : Ok(tvSeries);
         }
 
@@ -90,7 +93,7 @@ namespace Rocket.Web.Controllers.ReleaseList
         [Route("{id:int:min(1)}/cast")]
         public IHttpActionResult GetTvSeriesCast(int id)
         {
-            var tvSeries = _tvSeriesDetailedInfoService.GetPersons(id);
+            var tvSeries = _tvSeriesPersonService.GetPersons(id);
             return tvSeries == null ? (IHttpActionResult)NotFound() : Ok(tvSeries);
         }
     }

@@ -30,19 +30,5 @@ namespace Rocket.BL.Common.Services.ReleaseList
         /// <param name="personsCount">Количество участников сериала</param>
         /// <returns>Сериал</returns>
         TvSeriesFullDto GetTvSeries(int id, int? episodesCount = null, int? personsCount = null);
-
-        /// <summary>
-        /// Возвращает коллекцию сезонов сериала по заданному идентификатору сериала
-        /// </summary>
-        /// <param name="id">Идентификатор сериала</param>
-        /// <returns>Коллекция сезонов сериала</returns>
-        TvSeriesSeasonsDto GetSeasons(int id);
-
-        /// <summary>
-        /// Возвращает коллекцию участников сериала по заданному идентификатору сериала
-        /// </summary>
-        /// <param name="id">Идентификатор сериала</param>
-        /// <returns>Коллекция участников сериала</returns>
-        TvSeriesPersonsDto GetPersons(int id);
     }
 }
