@@ -35,7 +35,7 @@ namespace Rocket.BL
             Bind<IUserAccountStatusService>().To<UserAccountStatusService>();
             Bind<IUserManagementService>().To<UserManagementService>();
 
-            Bind<IGenreManager>().To<ChangeGenreManagerService>();
+            Bind<ITVGenreManager>().To<ChangeTVGenreManagerService>();
             Bind<IGenreService>().To<GenreService>();
             Bind<IMailNotificationService>().To<MailNotificationService>()
                 .WithConstructorArgument(
