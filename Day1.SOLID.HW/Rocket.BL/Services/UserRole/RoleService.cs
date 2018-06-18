@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using Common.Logging;
 using Microsoft.AspNet.Identity;
 using Rocket.BL.Common.Models.UserRoles;
+using Rocket.BL.Common.Services.UserRole;
 using Rocket.DAL.Common.DbModels.Identity;
 using Rocket.DAL.Common.UoW;
 using Rocket.DAL.Identity;
 
-namespace Rocket.BL.Services.UserServices
+namespace Rocket.BL.Services.UserRole
 {
-    public class RoleService : BaseService
+    public class RoleService : BaseService, IRoleService
     {
         private readonly ILog _logger;
         private readonly RockeRoleManager _roleManager;
@@ -41,13 +43,13 @@ namespace Rocket.BL.Services.UserServices
             return _roleManager.Roles.Include(t => t.Permissions).ToArray().Select(Mapper.Map<Role>);
         }
 
-        //public IEnumerable<Role> Get(
-        //    Expression<Func<DbRole, bool>> filter = null, 
-        //    Func<IQueryable<DbRole>, IOrderedQueryable<DbRole>> orderBy = null, 
-        //    string includeProperties = "")
-        //{
-        //    return _unitOfWork.RoleRepository.Get(filter, orderBy, includeProperties).Select(Mapper.Map<Role>);
-        //}
+        public IEnumerable<Role> Get(
+            Expression<Func<DbRole, bool>> filter = null,
+            Func<IQueryable<DbRole>, IOrderedQueryable<DbRole>> orderBy = null,
+            string includeProperties = "")
+        {
+            return _unitOfWork.RoleRepository.Get(filter, orderBy, includeProperties).Select(Mapper.Map<Role>);
+        }
 
         public async Task<Role> GetById(string roleId)
         {
