@@ -16,12 +16,12 @@ namespace Rocket.Web.Controllers.UserPayments
     public class IPNController : ApiController
     {
         private readonly IUserPaymentService _userPaymentService;
-        private readonly IUserAccountLevelService _userAccountLevelService;
+        private readonly IUserAccountManager _userAccountManager;
 
-        public IPNController(IUserPaymentService userPaymentService, IUserAccountLevelService userAccountLevelService)
+        public IPNController(IUserPaymentService userPaymentService, IUserAccountManager userAccountManager)
         {
             _userPaymentService = userPaymentService;
-            _userAccountLevelService = userAccountLevelService;
+            _userAccountManager = userAccountManager;
         }
 
         [HttpPost]
@@ -113,7 +113,7 @@ namespace Rocket.Web.Controllers.UserPayments
                     var accountLevel = new AccountLevel();
                     accountLevel.Id = 2;
                     accountLevel.Name = "Премиум";
-                    _userAccountLevelService.SetUserAccountLevel(int.Parse(payment.UserId), accountLevel);
+                    _userAccountManager.SetUserAccountLevel(int.Parse(payment.UserId), accountLevel);
                 }
             }
             else if (ipnContext.Verification.Equals("INVALID"))

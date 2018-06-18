@@ -139,10 +139,9 @@
     <Compile Include="Services\IRoleService.cs" />
     <Compile Include="Services\IUserRoleManager.cs" />
     <Compile Include="Services\PersonalArea\IEmailManager.cs" />
-    <Compile Include="Services\PersonalArea\IPasswordManager.cs" />
+    <Compile Include="Services\User\IUserPasswordManager.cs" />
     <Compile Include="Services\PersonalArea\ITVGenreManager.cs" />
     <Compile Include="Services\PersonalArea\IMusicGenreManager.cs" />
-    <Compile Include="Services\PersonalArea\IPersonalDataManager.cs" />
     <Compile Include="Models\PersonalArea\Category.cs" />
     <Compile Include="Models\PersonalArea\Genre.cs" />
     <Compile Include="Models\ReleaseList\Country.cs" />
@@ -164,15 +163,14 @@
     <Compile Include="Services\ReleaseList\IEpisodeService.cs" />
     <Compile Include="Services\ReleaseList\IGenreService.cs" />
     <Compile Include="Services\ReleaseList\ISubscriptionService.cs" />
-    <Compile Include="Services\ReleaseList\ITvSeriesDetailedInfoService.cs" />
+    <Compile Include="Services\ReleaseList\ITvSeriesService.cs" />
     <Compile Include="Services\UserPayment\IUserPaymentService.cs" />
-    <Compile Include="Services\User\IUserAccountLevelService.cs" />
-    <Compile Include="Services\User\IUserAccountStatusService.cs" />
-    <Compile Include="Services\User\IUserManagementService.cs" />
+    <Compile Include="Services\User\IUserAccountManager.cs" />
+    <Compile Include="Services\User\IUserManager.cs" />
     <Compile Include="Services\User\IUserValidatateService.cs" />
-    <Compile Include="Services\ReleaseList\IFilmDetailedInfoService.cs" />
+    <Compile Include="Services\ReleaseList\IFilmService.cs" />
     <Compile Include="Services\ReleaseList\IGuestReleaseListService.cs" />
-    <Compile Include="Services\ReleaseList\IMusicDetailedInfoService.cs" />
+    <Compile Include="Services\ReleaseList\IMusicReleaseService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

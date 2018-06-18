@@ -23,17 +23,15 @@ namespace Rocket.BL
     {
         public override void Load()
         {
-            Bind<ITvSeriesDetailedInfoService>().To<TvSeriesDetailedInfoService>();
-            Bind<IMusicDetailedInfoService>().To<MusicDetailedInfoService>();
+            Bind<ITvSeriesService>().To<TvSeriesDetailedInfoService>();
+            Bind<IMusicReleaseService>().To<MusicDetailedInfoService>();
             Bind<IEpisodeService>().To<EpisodeService>();
-            Bind<IPersonalDataManager>().To<PersonalDataService>();
             Bind<IValidator<Common.Models.User.User>>().To<UserValidatorCheckRequiredFields>();
             Bind<IEmailManager>().To<ChangeEmailManagerService>();
             Bind<IUserPaymentService>().To<UserPaymentService>();
 
-            Bind<IUserAccountLevelService>().To<UserAccountLevelService>();
-            Bind<IUserAccountStatusService>().To<UserAccountStatusService>();
-            Bind<IUserManagementService>().To<UserManagementService>();
+            Bind<IUserAccountManager>().To<UserAccountManager>();
+            Bind<IUserManager>().To<UserManager>();
 
             Bind<ITVGenreManager>().To<ChangeTVGenreManagerService>();
             Bind<IGenreService>().To<GenreService>();
