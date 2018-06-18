@@ -1,29 +1,29 @@
-﻿using FluentValidation;
-using Rocket.BL.Common.Services.PersonalArea;
-using Rocket.Web.Extensions;
-using Rocket.Web.Properties;
-using Swashbuckle.Swagger.Annotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Results;
+using Rocket.BL.Common.Services.User;
+using Rocket.Web.Extensions;
+using Rocket.Web.Properties;
+using Swashbuckle.Swagger.Annotations;
 
-namespace Rocket.Web.Controllers.PersonalArea
+namespace Rocket.Web.Controllers.User
 {
-    [RoutePrefix("personal/user")]
-    public class PersonalInfoController : ApiController
+    [RoutePrefix("user/account")]
+    public class UserAccountController : ApiController
     {
-        private IPersonalDataManager _personalDataManager;
-        
-        public PersonalInfoController(IPersonalDataManager personalDataManager)
+        private IUserAccountManager _userAccountManager;
+
+        public UserAccountController(IUserAccountManager userAccountManager)
         {
-            _personalDataManager = personalDataManager;
+            _userAccountManager = userAccountManager;
         }
 
         [HttpGet]
         [Route()]
         public IHttpActionResult GetAuthorisedUser()
         {
-            var user = _personalDataManager.GetUserData(User.GetUserId());
+            var user = _userAccountManager.GetUserData(User.GetUserId());
             return user == null ? (IHttpActionResult)NotFound() : Ok(user);
         }
 
@@ -40,7 +40,7 @@ namespace Rocket.Web.Controllers.PersonalArea
 
             try
             {
-                _personalDataManager.ChangePersonalData(User.GetUserId(), firstName, lastName, avatar);
+                _userAccountManager.ChangePersonalData(User.GetUserId(), firstName, lastName, avatar);
             }
             catch (ValidationException exception)
             {
