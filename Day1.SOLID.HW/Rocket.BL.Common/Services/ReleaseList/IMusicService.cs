@@ -10,7 +10,7 @@ namespace Rocket.BL.Common.Services.ReleaseList
     /// Представляет сервис для работы с детальной информацией
     /// о музыкальных релизах в хранилище данных
     /// </summary>
-    public interface IMusicDetailedInfoService : IDisposable
+    public interface IMusicService : IDisposable
     {
         /// <summary>
         /// Возвращает музыкальный релиз с заданным идентификатором из хранилища данных

@@ -16,14 +16,14 @@ namespace Rocket.BL.Services.ReleaseList
     /// Представляет сервис для работы с детальной информацией
     /// о сериалах в хранилище данных
     /// </summary>
-    public class TvSeriesDetailedInfoService : BaseService, ITvSeriesDetailedInfoService
+    public class TvSeriesService : BaseService, ITvSeriesService
     {
         /// <summary>
-        /// Создает новый экземпляр <see cref="TvSeriesDetailedInfoService"/>
+        /// Создает новый экземпляр <see cref="TvSeriesService"/>
         /// с заданным unit of work
         /// </summary>
         /// <param name="unitOfWork">Экземпляр unit of work</param>
-        public TvSeriesDetailedInfoService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public TvSeriesService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
 

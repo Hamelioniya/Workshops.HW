@@ -10,9 +10,9 @@ namespace Rocket.Web.Controllers.ReleaseList
     [RoutePrefix("tvseries")]
     public class TvSeriesController : ApiController
     {
-        private readonly ITvSeriesDetailedInfoService _tvSeriesDetailedInfoService;
+        private readonly ITvSeriesService _tvSeriesDetailedInfoService;
 
-        public TvSeriesController(ITvSeriesDetailedInfoService tvSeriesDetailedInfoService)
+        public TvSeriesController(ITvSeriesService tvSeriesDetailedInfoService)
         {
             _tvSeriesDetailedInfoService = tvSeriesDetailedInfoService;
         }

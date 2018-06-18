@@ -136,6 +136,9 @@
     <Compile Include="Mappings\ReleaseList\MusicianMappingProfile.cs" />
     <Compile Include="Services\ILogService.cs" />
     <Compile Include="Services\Notification\IMailNotificationService.cs" />
+    <Compile Include="Services\ReleaseList\IFilmService.cs" />
+    <Compile Include="Services\ReleaseList\IMusicService.cs" />
+    <Compile Include="Services\ReleaseList\ITvSeriesService.cs" />
     <Compile Include="Services\UserRole\IRoleService.cs" />
     <Compile Include="Services\UserRole\IUserRoleManager.cs" />
     <Compile Include="Services\PersonalArea\IEmailManager.cs" />
@@ -163,14 +166,11 @@
     <Compile Include="Services\ReleaseList\IEpisodeService.cs" />
     <Compile Include="Services\ReleaseList\IGenreService.cs" />
     <Compile Include="Services\ReleaseList\ISubscriptionService.cs" />
-    <Compile Include="Services\ReleaseList\ITvSeriesService.cs" />
     <Compile Include="Services\UserPayment\IUserPaymentService.cs" />
     <Compile Include="Services\User\IUserAccountManager.cs" />
     <Compile Include="Services\User\IUserManager.cs" />
     <Compile Include="Services\User\IUserValidatateService.cs" />
-    <Compile Include="Services\ReleaseList\IFilmService.cs" />
     <Compile Include="Services\ReleaseList\IGuestReleaseListService.cs" />
-    <Compile Include="Services\ReleaseList\IMusicReleaseService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

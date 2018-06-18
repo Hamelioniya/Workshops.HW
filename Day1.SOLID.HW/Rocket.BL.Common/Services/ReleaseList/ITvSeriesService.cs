@@ -8,7 +8,7 @@ namespace Rocket.BL.Common.Services.ReleaseList
     /// Представляет сервис для работы с детальной информацией
     /// о сериалах в хранилище данных
     /// </summary>
-    public interface ITvSeriesDetailedInfoService : IDisposable
+    public interface ITvSeriesService : IDisposable
     {
         /// <summary>
         /// Возвращает страницу сериалов с заданным номером, размером страницы

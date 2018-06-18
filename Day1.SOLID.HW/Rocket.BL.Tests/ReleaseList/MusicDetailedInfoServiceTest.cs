@@ -14,13 +14,13 @@ using Rocket.DAL.Common.Repositories;
 namespace Rocket.BL.Tests.ReleaseList
 {
     /// <summary>
-    /// Unit-тесты для сервиса <see cref="MusicDetailedInfoService"/>
+    /// Unit-тесты для сервиса <see cref="MusicService"/>
     /// </summary>
     [TestFixture]
     public class MusicDetailedInfoServiceTest
     {
         private const int MusicCount = 300;
-        private MusicDetailedInfoService _musicDetailedInfoService;
+        private MusicService _musicDetailedInfoService;
         private FakeDbMusicData _fakeDbMusicData;
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Rocket.BL.Tests.ReleaseList
             mockDbMusicUnitOfWork.Setup(mock => mock.MusicRepository)
                 .Returns(() => mockDbMusicRepository.Object); //todo - закоментил, не знаю в чем дело
 
-            _musicDetailedInfoService = new MusicDetailedInfoService(mockDbMusicUnitOfWork.Object);
+            _musicDetailedInfoService = new MusicService(mockDbMusicUnitOfWork.Object);
         }
 
         /// <summary>

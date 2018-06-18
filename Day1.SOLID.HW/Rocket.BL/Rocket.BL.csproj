@@ -135,14 +135,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\ReleaseList\SubscriptionService.cs" />
-    <Compile Include="Services\ReleaseList\TvSeriesDetailedInfoService.cs" />
+    <Compile Include="Services\ReleaseList\TvSeriesService.cs" />
     <Compile Include="Services\UserPayment\UserPaymentService.cs" />
     <Compile Include="Services\UserRole\PermissionService.cs" />
     <Compile Include="Services\UserRole\UserRoleManager.cs" />
     <Compile Include="Services\UserRole\RoleService.cs" />
-    <Compile Include="Services\ReleaseList\FilmDetailedInfoService.cs" />
+    <Compile Include="Services\ReleaseList\FilmService.cs" />
     <Compile Include="Services\BaseService.cs" />
-    <Compile Include="Services\ReleaseList\MusicDetailedInfoService.cs" />
+    <Compile Include="Services\ReleaseList\MusicService.cs" />
     <Compile Include="Services\User\UserAccountManager.cs" />
     <Compile Include="Services\InfoLogService.cs" />
     <Compile Include="Services\User\UserManager.cs" />

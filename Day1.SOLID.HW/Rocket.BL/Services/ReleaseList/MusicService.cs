@@ -15,14 +15,14 @@ namespace Rocket.BL.Services.ReleaseList
     /// Представляет сервис для работы с детальной информацией
     /// о музыкальных релизах в хранилище данных
     /// </summary>
-    public class MusicDetailedInfoService : BaseService, IMusicDetailedInfoService
+    public class MusicService : BaseService, IMusicService
     {
         /// <summary>
-        /// Создает новый экземпляр <see cref="MusicDetailedInfoService"/>
+        /// Создает новый экземпляр <see cref="MusicService"/>
         /// с заданным unit of work
         /// </summary>
         /// <param name="unitOfWork">Экземпляр unit of work</param>
-        public MusicDetailedInfoService(IUnitOfWork unitOfWork)
+        public MusicService(IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
         }

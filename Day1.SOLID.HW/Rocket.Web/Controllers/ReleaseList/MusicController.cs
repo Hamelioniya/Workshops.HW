@@ -10,9 +10,9 @@ namespace Rocket.Web.Controllers.ReleaseList
     [RoutePrefix("music")]
     public class MusicController : ApiController
     {
-        private readonly IMusicDetailedInfoService _musicDetailedInfoService;
+        private readonly IMusicService _musicDetailedInfoService;
 
-        public MusicController(IMusicDetailedInfoService musicDetailedInfoService)
+        public MusicController(IMusicService musicDetailedInfoService)
         {
             _musicDetailedInfoService = musicDetailedInfoService;
         }
