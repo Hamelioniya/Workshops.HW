@@ -9,7 +9,7 @@ namespace Rocket.BL.Common.Services.User
     /// <summary>
     /// Представляет сервис для работы с пользователем.
     /// </summary>
-    public interface IUserManagementService : IDisposable
+    public interface IUserManager : IDisposable
     {
         /// <summary>
         /// Возвращает всех пользователей
@@ -57,16 +57,6 @@ namespace Rocket.BL.Common.Services.User
         /// <param name="id">Идентификатор пользователя.</param>
         /// <returns> Task </returns>
         Task DeleteUser(string id);
-
-        /// <summary>
-        /// После добавление пользователя в репозитарий 
-        /// генерирует ссылку, по которой пользователь
-        /// в случае получения уведомлении об активации, может 
-        /// активировать аккаунт.
-        /// </summary>
-        /// <param name="user">Экземпляр пользователя.</param>
-        /// <returns>Ссылку для активации аккаунта.</returns>
-        string CreateConfirmationLink(Models.User.User user);
 
         /// <summary>
         /// Проверяет наличие пользователя в хранилище данных

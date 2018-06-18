@@ -21,23 +21,23 @@ namespace Rocket.BL.Services.User
     /// Представляет сервис для работы с пользователями
     /// в хранилище данных.
     /// </summary>
-    public class UserManagementService : BaseService, IUserManagementService
+    public class UserManager : BaseService, IUserManager
     {
-        private readonly RocketUserManager _usermanager;
-        private readonly IUserAccountLevelService _userAccountLevelService;
+        private readonly RocketUserManager _userManager;
+        private readonly IUserAccountManager _userAccountManager;
 
         /// <summary>
-        /// Создает новый экземпляр <see cref="UserManagementService"/>
+        /// Создает новый экземпляр <see cref="UserManager"/>
         /// с заданным unit of work.
         /// </summary>
         /// <param name="unitOfWork"> uow </param>
         /// <param name="usermanager"> manager </param>
-        public UserManagementService(IUnitOfWork unitOfWork, RocketUserManager usermanager, IUserAccountLevelService userAccountLevelService)
+        public UserManager(IUnitOfWork unitOfWork, RocketUserManager usermanager, IUserAccountManager userAccountManager)
             : base(unitOfWork)
         {
 
-            _usermanager = usermanager;
-            _userAccountLevelService = userAccountLevelService;
+            _userManager = usermanager;
+            _userAccountManager = userAccountManager;
         }
         /// <summary>
         /// Возвращает всех пользователей
@@ -46,7 +46,7 @@ namespace Rocket.BL.Services.User
         /// <returns>Коллекцию всех экземпляров пользователей.</returns>
         public ICollection<Common.Models.User.User> GetAllUsers()
         {
-            return _usermanager.Users.ProjectTo<Common.Models.User.User>().ToArray();
+            return _userManager.Users.ProjectTo<Common.Models.User.User>().ToArray();
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Rocket.BL.Services.User
         /// <returns>Коллекция экземпляров пользователей для пейджинга.</returns>
         public ICollection<Common.Models.User.User> GetUsersPage(int pageSize, int pageNumber)
         {
-            return _usermanager.Users.OrderBy(user => user.Id).Skip((pageNumber - 1) * pageSize)
+            return _userManager.Users.OrderBy(user => user.Id).Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ProjectTo<Common.Models.User.User>()
                 .ToArray();
@@ -71,7 +71,7 @@ namespace Rocket.BL.Services.User
         /// <returns>Экземпляр пользователя.</returns>
         public async Task<Common.Models.User.User> GetUser(string id)
         {
-            var user = await _usermanager.FindByIdAsync(id).ConfigureAwait(false);
+            var user = await _userManager.FindByIdAsync(id).ConfigureAwait(false);
 
             return Mapper.Map<Common.Models.User.User>(user);
         }
@@ -84,7 +84,7 @@ namespace Rocket.BL.Services.User
         /// <returns>Идентификатор пользователя.</returns>
         public async Task<IdentityResult> AddUser(Common.Models.User.User user)
         {
-            //user.AccountLevel = _userAccountLevelService.GetUserAccountLevel(1);
+            //user.AccountLevel = _userAccountManager.GetUserAccountLevel(1);
             var dbUser = Mapper.Map<DbUser>(user);
             dbUser.Id = Guid.NewGuid().ToString();
 
@@ -107,7 +107,7 @@ namespace Rocket.BL.Services.User
             dbUser.LockoutEnabled = false;
             dbUser.AccessFailedCount = 0;
 
-            var result = await _usermanager.CreateAsync(dbUser)
+            var result = await _userManager.CreateAsync(dbUser)
                 .ConfigureAwait(false);
 
             return result;
@@ -124,7 +124,7 @@ namespace Rocket.BL.Services.User
         {
             var dbUser = Mapper.Map<DbUser>(user);
 
-            var result = await _usermanager.UpdateAsync(dbUser).ConfigureAwait(false);
+            var result = await _userManager.UpdateAsync(dbUser).ConfigureAwait(false);
 
             if (result.Succeeded)
             {
@@ -141,9 +141,9 @@ namespace Rocket.BL.Services.User
         /// <returns> Task </returns>
         public async Task DeleteUser(string id)
         {
-            var user = await this._usermanager.FindByIdAsync(id).ConfigureAwait(false);
+            var user = await this._userManager.FindByIdAsync(id).ConfigureAwait(false);
 
-            var result = await _usermanager.DeleteAsync(user);
+            var result = await _userManager.DeleteAsync(user);
 
             if (result.Succeeded)
             {
@@ -164,20 +164,6 @@ namespace Rocket.BL.Services.User
             return _unitOfWork.UserRepository.Get(
                            Mapper.Map<Expression<Func<DbUser, bool>>>(filter))
                       .FirstOrDefault() != null;
-        }
-
-        /// <summary>
-        /// После добавление пользователя в репозитарий
-        /// генерирует ссылку, по которой пользователь
-        /// в случае получения уведомлении об активации, может
-        /// активировать аккаунт.
-        /// </summary>
-        /// <param name="user">Экземпляр пользователя.</param>
-        /// <returns>Ссылку для активации аккаунта.</returns>
-        public string CreateConfirmationLink(Common.Models.User.User user)
-        {
-            // todo надо сделать реализацию, после того, как "прорастут" вьюхи.
-            return string.Empty;
         }
     }
 }

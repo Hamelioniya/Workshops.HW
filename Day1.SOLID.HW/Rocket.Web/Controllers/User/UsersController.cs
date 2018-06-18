@@ -23,10 +23,10 @@ namespace Rocket.Web.Controllers.User
     {
         private readonly RocketUserManager _rocketUserManagerService;
         private readonly RockeRoleManager _rolemanager;
-        private readonly IUserManagementService _userManagementService;
+        private readonly IUserManager _userManagementService;
 
         public UsersController(
-            RocketUserManager rocketUserManagerService, RockeRoleManager rolemanager, IUserManagementService userNativeManagementService)
+            RocketUserManager rocketUserManagerService, RockeRoleManager rolemanager, IUserManager userNativeManagementService)
         {
             _rocketUserManagerService = rocketUserManagerService;
             _rolemanager = rolemanager;
