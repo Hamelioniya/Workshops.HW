@@ -1,9 +1,9 @@
-﻿namespace Rocket.BL.Common.Services.PersonalArea
+﻿namespace Rocket.BL.Common.Services.User
 {
     /// <summary>
     /// Представляет сервис для работы с паролем.
     /// </summary>
-    public interface IPasswordManager
+    public interface IUserPasswordManager
     {
         /// <summary>
         /// Изменение пароля на новый.

@@ -1,20 +1,18 @@
 ﻿using System.Text.RegularExpressions;
 using FluentValidation;
-using Rocket.BL.Common.Services.PersonalArea;
+using Rocket.BL.Common.Services.User;
 using Rocket.BL.Properties;
 using Rocket.DAL.Common.UoW;
 using Rocket.DAL.Identity;
 
-namespace Rocket.BL.Services.PersonalArea
+namespace Rocket.BL.Services.User
 {
-    public class PasswordService : BaseService, IPasswordManager
+    public class PasswordService : BaseService, IUserPasswordManager
     {
-        private readonly IValidator _validator;
         private readonly RocketUserManager _userManager;
 
-        public PasswordService(IUnitOfWork unitOfWork, IValidator<Common.Models.User.User> validator, RocketUserManager usermanager) : base(unitOfWork)
+        public PasswordService(IUnitOfWork unitOfWork, RocketUserManager usermanager) : base(unitOfWork)
         {
-            _validator = validator;
             _userManager = usermanager;
         }
 
