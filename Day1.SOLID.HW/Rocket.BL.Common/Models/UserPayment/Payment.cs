@@ -1,9 +1,9 @@
-﻿namespace Rocket.BL.Common.Models
+﻿namespace Rocket.BL.Common.Models.UserPayment
 {
     /// <summary>
     /// Представляет модель данных о платеже
     /// </summary>
-    public class UserPayment
+    public class Payment
     {
         /// <summary>
         /// Возвращает или задает уникальный идентификатор платежа
