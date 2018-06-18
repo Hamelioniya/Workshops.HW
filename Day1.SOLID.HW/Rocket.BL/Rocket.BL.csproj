@@ -136,10 +136,10 @@
     </Compile>
     <Compile Include="Services\ReleaseList\SubscriptionService.cs" />
     <Compile Include="Services\ReleaseList\TvSeriesDetailedInfoService.cs" />
-    <Compile Include="Services\UserPaymentService\UserPaymentService.cs" />
-    <Compile Include="Services\UserServices\PermissionService.cs" />
-    <Compile Include="Services\UserServices\UserRoleManager.cs" />
-    <Compile Include="Services\UserServices\RoleService.cs" />
+    <Compile Include="Services\UserPayment\UserPaymentService.cs" />
+    <Compile Include="Services\UserRole\PermissionService.cs" />
+    <Compile Include="Services\UserRole\UserRoleManager.cs" />
+    <Compile Include="Services\UserRole\RoleService.cs" />
     <Compile Include="Services\ReleaseList\FilmDetailedInfoService.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\ReleaseList\MusicDetailedInfoService.cs" />

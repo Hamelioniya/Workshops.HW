@@ -1,8 +1,7 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Rocket.BL.Common.Services;
-using Rocket.BL.Services.UserServices;
+using Rocket.BL.Common.Services.UserRole;
 using Swashbuckle.Swagger.Annotations;
 
 namespace Rocket.Web.Controllers.UserRole
@@ -10,9 +9,9 @@ namespace Rocket.Web.Controllers.UserRole
     [RoutePrefix("user")]
     public class RoleManagerController : ApiController
     {
-        private readonly UserRoleManager _roleManager;
+        private readonly IUserRoleManager _roleManager;
 
-        public RoleManagerController(UserRoleManager roleManager)
+        public RoleManagerController(IUserRoleManager roleManager)
         {
             _roleManager = roleManager;
         }

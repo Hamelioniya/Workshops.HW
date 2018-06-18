@@ -2,12 +2,13 @@
 using System.Threading.Tasks;
 using Common.Logging;
 using Microsoft.AspNet.Identity;
+using Rocket.BL.Common.Services.UserRole;
 using Rocket.DAL.Common.UoW;
 using Rocket.DAL.Identity;
 
-namespace Rocket.BL.Services.UserServices
+namespace Rocket.BL.Services.UserRole
 {
-    public class UserRoleManager : BaseService
+    public class UserRoleManager : BaseService, IUserRoleManager
     {
         private const string DefaultRoleId = "test"; // todo MP закинуть в хранилище дефолтроль когда будет конкретная база с guid
         private readonly ILog _logger;
@@ -25,7 +26,7 @@ namespace Rocket.BL.Services.UserServices
         /// <param name="userId"> Идентификатор пользователя. </param>
         /// <param name="roleId"> Идентификатор роли. </param>
         /// <returns> Task </returns>
-        public virtual async Task<IdentityResult> AddToRole(string userId, string roleId = DefaultRoleId)
+        public async Task<IdentityResult> AddToRole(string userId, string roleId = DefaultRoleId)
         {
             _logger.Trace($"Request AddRole in queue: Role {roleId}, user {userId}");
             var result = await _userManager.AddToRoleAsync(userId, roleId).ConfigureAwait(false);
@@ -56,7 +57,7 @@ namespace Rocket.BL.Services.UserServices
         /// <param name="userId"> Идентификатор пользователя. </param>
         /// <param name="roleId"> Идентификатор роли. </param>
         /// <returns> bool </returns>
-        public virtual async Task<IdentityResult> RemoveFromRole(string userId, string roleId)
+        public async Task<IdentityResult> RemoveFromRole(string userId, string roleId)
         {
             _logger.Trace($"Request RemoveFromRole in queue: Role {roleId}, user {userId}");
             var result = await _userManager.RemoveFromRoleAsync(userId, roleId).ConfigureAwait(false);
@@ -87,14 +88,14 @@ namespace Rocket.BL.Services.UserServices
         /// </summary>
         /// <param name="userId"> Идентификатор пользователя. </param>
         /// <returns>Список ролей</returns>
-        public virtual async Task<IList<string>> GetRoles(string userId)
+        public async Task<IEnumerable<string>> GetRoles(string userId)
         {
             _logger.Trace($"Request GetRoles : user {userId}");
             return await _userManager.GetRolesAsync(userId).ConfigureAwait(false);
 
-            //    var dbUser = _unitOfWork.UserRepository.Get(t => t.Id == userId, includeProperties: "Roles").First();
-            //    _logger.Trace($"Checking roles for user: {dbUser.Id} -- {dbUser.FirstName}{dbUser.LastName} ");
-            //    return dbUser.Roles.Select(t => t.Role);
+            //var dbUser = _unitOfWork.UserRepository.Get(t => t.Id == userId, includeProperties: "Roles").FirstOrDefault();
+            //_logger.Trace($"Checking roles for user: {dbUser.Id} -- {dbUser.FirstName}{dbUser.LastName} ");
+            //return dbUser.Roles.Select(t => t.Role);
             //throw new NotImplementedException();
         }
 
@@ -104,7 +105,7 @@ namespace Rocket.BL.Services.UserServices
         /// <param name="userId"> Идентификатор пользователя. </param>
         /// <param name="roleId"> Идентификатор роли. </param>
         /// <returns>bool</returns>
-        public virtual async Task<bool> IsInRole(string userId, string roleId)
+        public async Task<bool> IsInRole(string userId, string roleId)
         {
             _logger.Trace($"Request IsInRole : user {userId}");
             return await _userManager.IsInRoleAsync(userId, roleId).ConfigureAwait(false);

@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Rocket.DAL.Common.DbModels.Identity;
 
-namespace Rocket.BL.Common.Services
+namespace Rocket.BL.Common.Services.UserRole
 {
     public interface IUserRoleManager : IDisposable
     {
         /// <summary>
-        /// Добавить в роль соответствующий пермишен
+        /// Добавить пользователю роль
         /// </summary>
         /// <param name="userId"> Идентификатор ползователя. </param>
         /// <param name="roleId"> Идентификатор ролию </param>
@@ -21,7 +21,7 @@ namespace Rocket.BL.Common.Services
         /// </summary>
         /// <param name="userId"> Идентификатор ползователя. </param>
         /// <returns>list</returns>
-        IEnumerable<DbRole> GetRoles(string userId);
+        Task<IEnumerable<string>> GetRoles(string userId);
 
         /// <summary>
         /// Проверка что у юзера есть соответствующая роль
@@ -29,7 +29,7 @@ namespace Rocket.BL.Common.Services
         /// <param name="userId"> Идентификатор ползователя. </param>
         /// <param name="roleId"> Идентификатор ролию </param>
         /// <returns>bool</returns>
-        bool IsInRole(string userId, string roleId);
+        Task<bool> IsInRole(string userId, string roleId);
 
         /// <summary>
         /// Удалить роль у юзера
