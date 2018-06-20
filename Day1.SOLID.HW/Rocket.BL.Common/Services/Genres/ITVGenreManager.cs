@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Rocket.BL.Common.Services.PersonalArea
+namespace Rocket.BL.Common.Services.Genres
 {
     /// <summary>
     /// Интерфейс для работы с жанрами.

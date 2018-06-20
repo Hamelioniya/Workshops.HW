@@ -145,8 +145,8 @@
     <Compile Include="Services\UserRole\IUserRoleManager.cs" />
     <Compile Include="Services\PersonalArea\IEmailManager.cs" />
     <Compile Include="Services\User\IUserPasswordManager.cs" />
-    <Compile Include="Services\PersonalArea\ITVGenreManager.cs" />
-    <Compile Include="Services\PersonalArea\IMusicGenreManager.cs" />
+    <Compile Include="Services\Genres\ITVGenreManager.cs" />
+    <Compile Include="Services\Genres\IMusicGenreManager.cs" />
     <Compile Include="Models\PersonalArea\Category.cs" />
     <Compile Include="Models\PersonalArea\Genre.cs" />
     <Compile Include="Models\ReleaseList\Country.cs" />
@@ -166,7 +166,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\UserRole\IPermissionService.cs" />
     <Compile Include="Services\ReleaseList\IEpisodeService.cs" />
-    <Compile Include="Services\ReleaseList\IGenreService.cs" />
     <Compile Include="Services\ReleaseList\ISubscriptionService.cs" />
     <Compile Include="Services\UserPayment\IUserPaymentService.cs" />
     <Compile Include="Services\User\IUserAccountManager.cs" />

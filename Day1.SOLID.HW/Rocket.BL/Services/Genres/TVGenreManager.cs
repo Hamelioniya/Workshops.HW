@@ -1,17 +1,17 @@
 ﻿using FluentValidation;
 using Rocket.BL.Common.Models.PersonalArea;
-using Rocket.BL.Common.Services.PersonalArea;
+using Rocket.BL.Common.Services.Genres;
 using Rocket.BL.Properties;
 using Rocket.DAL.Common.UoW;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Rocket.BL.Services.PersonalArea
+namespace Rocket.BL.Services.Genres
 {
-    public class ChangeTVGenreManagerService : BaseService, ITVGenreManager
+    public class TVGenreManager : BaseService, ITVGenreManager
     {
-        public ChangeTVGenreManagerService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public TVGenreManager(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
 

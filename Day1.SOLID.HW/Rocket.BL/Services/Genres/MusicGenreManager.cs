@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Rocket.BL.Common.Models.PersonalArea;
-using Rocket.BL.Common.Services.PersonalArea;
+using Rocket.BL.Common.Services.Genres;
 using Rocket.BL.Properties;
 using Rocket.DAL.Common.UoW;
 
-namespace Rocket.BL.Services.PersonalArea
+namespace Rocket.BL.Services.Genres
 {
     public class ChangeMusicGenreManagerService : BaseService, IMusicGenreManager
     {

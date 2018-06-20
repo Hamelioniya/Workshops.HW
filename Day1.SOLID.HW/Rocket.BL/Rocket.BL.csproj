@@ -123,13 +123,12 @@
     </Compile>
     <Compile Include="Services\Notification\MailNotificationService.cs" />
     <Compile Include="Services\PersonalArea\ChangeEmailManagerService.cs" />
-    <Compile Include="Services\PersonalArea\ChangeTVGenreManagerService.cs" />
-    <Compile Include="Services\PersonalArea\ChangeMusicGenreManagerService.cs" />
+    <Compile Include="Services\Genres\TVGenreManager.cs" />
+    <Compile Include="Services\Genres\MusicGenreManager.cs" />
     <Compile Include="Services\ReleaseList\SeasonService.cs" />
     <Compile Include="Services\ReleaseList\TvSeriesPersonService.cs" />
     <Compile Include="Services\User\PasswordService.cs" />
     <Compile Include="Services\ReleaseList\EpisodeService.cs" />
-    <Compile Include="Services\ReleaseList\GenreService.cs" />
     <Compile Include="Services\ReleaseList\GuestReleaseListService.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

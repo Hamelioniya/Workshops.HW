@@ -3,12 +3,14 @@ using MailKit;
 using MailKit.Net.Smtp;
 using Ninject.Modules;
 using Rocket.BL.Common.Services;
+using Rocket.BL.Common.Services.Genres;
 using Rocket.BL.Common.Services.Notification;
 using Rocket.BL.Common.Services.PersonalArea;
 using Rocket.BL.Common.Services.ReleaseList;
 using Rocket.BL.Common.Services.User;
 using Rocket.BL.Common.Services.UserPayment;
 using Rocket.BL.Services;
+using Rocket.BL.Services.Genres;
 using Rocket.BL.Services.Notification;
 using Rocket.BL.Services.PersonalArea;
 using Rocket.BL.Services.ReleaseList;
@@ -33,8 +35,7 @@ namespace Rocket.BL
             Bind<IUserAccountManager>().To<UserAccountManager>();
             Bind<IUserManager>().To<UserManager>();
 
-            Bind<ITVGenreManager>().To<ChangeTVGenreManagerService>();
-            Bind<IGenreService>().To<GenreService>();
+            Bind<ITVGenreManager>().To<TVGenreManager>();
             Bind<IMailNotificationService>().To<MailNotificationService>()
                 .WithConstructorArgument(
                     "transport",
